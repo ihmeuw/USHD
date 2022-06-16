@@ -1,6 +1,6 @@
 # US Health Disparities
 
-This is repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
+This repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
 
 ## Navigating this repository
 
