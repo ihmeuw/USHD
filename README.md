@@ -8,6 +8,8 @@ You can view the code for a particular publication by selecting the relevant bra
 
 ### Links to resources from IHME and the US Health Disparities Team
 
+* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
+
 
 You may find the [main IHME website here](http://www.healthdata.org).
 
