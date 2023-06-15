@@ -1,16 +1,7 @@
-# US Health Disparities
+# Life Expectancy - Race Ethnicity - 2023
 
-This repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
+# Other USHD work
 
-## Navigating this repository
+* To see other published code repositories for the US Health Disparities team, please visit our [code homepage](https://stash.ihme.washington.edu/projects/UC/repos/published_code/browse).
 
-You can view the code for a particular publication by selecting the relevant branch from the dropdown menu, or by selecting a link below.
-
-### Links to resources from IHME and the US Health Disparities Team
-
-* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
-
-
-You may find the [main IHME website here](http://www.healthdata.org).
-
-You may find [interactive USHD visualizations here](https://vizhub.healthdata.org/subnational/usa).
+* You may find [interactive US Health Disparities visualizations here](https://vizhub.healthdata.org/subnational/usa).
