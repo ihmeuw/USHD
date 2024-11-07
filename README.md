@@ -1,17 +1,14 @@
-# US Health Disparities
+# HDI - Race Ethnicity - 2024
 
-This repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
+This repo contains cleaned code used to generate HDI estimates in the United States by county, year, age, sex, race, and ethnicity as reported in 'Disparities in well-being in the USA by race and ethnicity, age, sex, and location, 2008–2021: an analysis using the Human Development Index' published in The Lancet on November 7, 2024.
 
-## Navigating this repository
+This repo contains two directories:
 
-You can view the code for a particular publication by selecting the relevant branch from the dropdown menu, or by selecting a link below.
+1) mortality contains code to model mortality rates and life expectancy using the prepared deaths and population data.
+2) sae.shared contains shared tools, scripts, and related utilities for modeling.
 
-### Links to resources from IHME and the US Health Disparities Team
+# Other USHD work
 
-* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
-* [Cause of Death - Race Ethnicity - 2023](https://github.com/ihmeuw/USHD/tree/cause_of_death_race_ethnicity_2023)
+* To see other published code repositories for the US Health Disparities team, please visit our [code homepage](https://github.com/ihmeuw/USHD/tree/main).
 
-
-You may find the [main IHME website here](http://www.healthdata.org).
-
-You may find [interactive USHD visualizations here](https://vizhub.healthdata.org/subnational/usa).
+* You may find [interactive US Health Disparities visualizations here](https://vizhub.healthdata.org/subnational/usa).
