@@ -11,6 +11,7 @@ You can view the code for a particular publication by selecting the relevant bra
 * [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
 * [Cause of Death - Race Ethnicity - 2023](https://github.com/ihmeuw/USHD/tree/cause_of_death_race_ethnicity_2023)
 * [HDI - Race Ethnicity - 2024](https://github.com/ihmeuw/USHD/tree/HDI_race_ethnicity_2024)
+* [Ten Americas - 2024](https://github.com/ihmeuw/USHD/tree/10_americas_2024)
 
 
 You may find the [main IHME website here](http://www.healthdata.org).
