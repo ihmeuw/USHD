@@ -1,18 +1,13 @@
-# US Health Disparities
+# Ten Americas - 2024
+This repo contains cleaned code used to generate life expectancy estimates in the United States between 2000-2021, for ten mutually exclusive and collectively exhaustive Americas defined based on race and ethnicity, geographical location, metropolitan status, income and Black-White residential segregation, by sex, age group and year as reported in 'Ten Americas: a systematic analysis of life expectancy disparities in the USA' published in The Lancet on November 21, 2024.
 
-This repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
+This repo contains two directories:
 
-## Navigating this repository
+1) mortality contains code to prepare deaths data and define the 10 Americas and model mortality rates and life expectancy.
+2) sae.shared contains shared tools, scripts, and related utilities for modeling.
 
-You can view the code for a particular publication by selecting the relevant branch from the dropdown menu, or by selecting a link below.
+# Other USHD work
+* To see other published code repositories for the US Health Disparities team, please visit our code homepage.
 
-### Links to resources from IHME and the US Health Disparities Team
-
-* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
-* [Cause of Death - Race Ethnicity - 2023](https://github.com/ihmeuw/USHD/tree/cause_of_death_race_ethnicity_2023)
-* [HDI - Race Ethnicity - 2024](https://github.com/ihmeuw/USHD/tree/HDI_race_ethnicity_2024)
-
-
-You may find the [main IHME website here](http://www.healthdata.org).
-
-You may find [interactive USHD visualizations here](https://vizhub.healthdata.org/subnational/usa).
+* You may find the [main IHME website here](http://www.healthdata.org).
+* You may find [interactive USHD visualizations here](https://vizhub.healthdata.org/subnational/usa).
