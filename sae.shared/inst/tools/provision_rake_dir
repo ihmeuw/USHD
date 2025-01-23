@@ -1,0 +1,196 @@
+#!/usr/bin/env python
+"""
+Provision a directory for raking and aggregation work on a USHD model output.
+
+Make a "smart copy" of a USHD model into a separate location for LSAE work.
+
+What is a "smart copy"?:
+
+* A mirror of the directory structure
+* Symbolic links of the individual files (which will be READ ONLY by LSAE)
+* Skipping of non-essential files including logs and model diagnostics
+"""
+import argparse
+from collections import deque
+from contextlib import contextmanager
+from pathlib import Path
+import os
+import re
+import subprocess
+
+
+DEFAULT_USHD_MODEL_ROOT = Path("FILEPATH")
+DEFAULT_LSAE_WORKFLOW_ROOT = Path("FILEPATH")
+
+
+# e.g., lt_draws_mcnty_2014_1_9.rds
+FILE_NAME_RE = re.compile(
+    """
+    ^
+    (mx|yll|lt)         # copy mortality, yll, and life table files
+    _
+    (draws|est)         # draws and estimate files
+    _
+    (mcnty|state|natl)  # geographic area
+    _
+    \d{4}               # year
+    _
+    [123]               # sex
+    _
+    \d                  # race - always a single digit
+    _
+    \d{1,3}             # education - may be 1 to 3 digits
+    [.]                 # literal "."
+    rds                 # must be RDS file
+    $
+    """, flags=re.VERBOSE)
+
+
+def main(root, dest_dir):
+    # umask uses inverse permissions
+    with umask(0x002):  # "full perms EXCEPT write access for "other"
+        dest_dir.mkdir(exist_ok=True)
+
+        # crawl contents. partition dirs and files
+        files = deque()
+        folders = deque()
+        errored = deque()
+        # this recursive glob can be slow
+        print(f"Scanning {root!s}")
+        for p in root.rglob("*"):
+            # e.g., Path("_all/settings.csv")
+            rel = p.relative_to(root)
+            try:
+                if p.is_dir():
+                    folders.append(rel)
+                elif is_file_to_copy(p):
+                    files.append(rel)
+                else:
+                    # print(f"Skipping {p}")
+                    pass
+            except PermissionError:
+                errored.append(p)
+
+        # make identical directory structure
+        print("Mirroring directory structure")
+        for f in folders:
+            (dest_dir / f).mkdir(parents=True, exist_ok=True)
+
+        # symlink files of interest
+        print("Symlinking source files")
+        for f in files:
+            dest = dest_dir / f
+            if dest.exists():
+                if dest.is_symlink():
+                    pass
+                else:
+                    print(f"WARNING: {dest} exists but is not symlink")
+            else:
+                source = root / f
+                dest.symlink_to(source)
+
+        if errored:
+            print("Files not handled due to permission error:")
+            for e in errored:
+                print(str(e))
+
+
+def is_file_to_copy(p: Path):
+    """
+    Predicate: is this a file we want to copy?
+    """
+    if FILE_NAME_RE.match(p.name):
+        return True
+    elif p.name == "mx_est_all.rds":
+        return True
+    elif p.name == "growth_rates.rds":
+        return True
+    elif p.name == "yll_est_all.rds":
+        return True
+    elif p.name == "settings.csv":
+        return True
+    elif p.name == "submitted_cause_list.csv":
+        return True
+    else:
+        return False
+
+
+@contextmanager
+def umask(mask):
+    """
+    Temporarily set umask to "team has full write access"
+    """
+    orig_umask = os.umask(0x002)
+    try:
+        yield
+    finally:
+        os.umask(orig_umask)  # restore umask at end
+
+
+def name_and_abs_path(p: Path, default_root: Path):
+    """
+    Return name of directory and absolute path to it.
+
+    Args:
+        p: user supplied path. May be absolute or relative.
+        default_root: default root for relative p args.
+
+    Returns
+        name: name of absolute path
+        path: absolute path.
+    """
+    if p.is_absolute():
+        name = p.name
+        path = p
+    else:
+        path = default_root / p
+        name = path.name
+    return name, path
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("model", type=Path,
+                        help=("USHD model. Can be absolute path or relative "
+                              f"to {DEFAULT_USHD_MODEL_ROOT!s}"))
+    parser.add_argument("dest", type=Path, nargs="?", default=None,
+                        help=("Optional destination to provision to. Defaults "
+                              "to dir named after 'model' in "
+                              f"{DEFAULT_LSAE_WORKFLOW_ROOT!s}"))
+
+    args = parser.parse_args()
+    model = args.model
+
+    # A little messy - assume relative paths are in the "normal location"
+    # but also support arbitrary absolute paths
+    #
+    # In all cases, copy to standardized output location
+    model_name, model_path = name_and_abs_path(model, DEFAULT_USHD_MODEL_ROOT)
+    if not model_path.exists():
+        raise RuntimeError(f"Do not see model {model!s}")
+
+    if args.dest is None:
+        dest = Path(model_name)
+    else:
+        dest = args.dest
+
+    dest_name, dest_path = name_and_abs_path(dest, DEFAULT_LSAE_WORKFLOW_ROOT)
+
+    if dest_path.exists():
+        print(f"WARNING: {dest!s} exists")
+
+    main(model_path, dest_path)
+
+    # change the group ownership to 'Domain Users' for dest_path and its subdirectories
+    # This is to make sharing files with USHD team easier
+    here = Path(__file__).parent.resolve()
+    set_group_ownership = here / "set_group_ownership.sh"
+    if not set_group_ownership.exists():
+        raise RuntimeError(f"{set_group_ownership!s} does not exist - cannot fix permissions")
+
+    cmd = [str(set_group_ownership), 'Domain Users', dest_path]
+    try:
+        output = subprocess.call(cmd)
+    except subprocess.SubprocessError:
+        msg = (f"Error running set_group_ownership.sh with 'Domain Users' for {dest_path}")
+        print(f"WARNING: {msg}")
