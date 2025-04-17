@@ -12,6 +12,14 @@ This repo contains five directories:
 
 # Other USHD work
 
+<<<<<<< HEAD
 * To see other published code repositories for the US Health Disparities team, please visit our [code homepage](https://github.com/ihmeuw/USHD/tree/main).
+=======
+* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
+* [Cause of Death - Race Ethnicity - 2023](https://github.com/ihmeuw/USHD/tree/cause_of_death_race_ethnicity_2023)
+* [HDI - Race Ethnicity - 2024](https://github.com/ihmeuw/USHD/tree/HDI_race_ethnicity_2024)
+* [Ten Americas - 2024](https://github.com/ihmeuw/USHD/tree/10_americas_2024)
+
+>>>>>>> parent of 941c09c... adding le by edu 2025
 
 * You may find [interactive US Health Disparities visualizations here](https://vizhub.healthdata.org/subnational/usa).
