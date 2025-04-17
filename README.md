@@ -13,6 +13,7 @@ You can view the code for a particular publication by selecting the relevant bra
 * [HDI - Race Ethnicity - 2024](https://github.com/ihmeuw/USHD/tree/HDI_race_ethnicity_2024)
 * [Ten Americas - 2024](https://github.com/ihmeuw/USHD/tree/10_americas_2024)
 * [Life Expectancy - Educational Attainment - 2025](https://github.com/ihmeuw/USHD/tree/life_expectancy_educational_attainment_2025)
+* [HALE - Race Ethnicity - 2025](https://github.com/ihmeuw/USHD/tree/HALE_race_ethnicity_2025)
 
 You may find the [main IHME website here](http://www.healthdata.org).
 
