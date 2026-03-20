@@ -1,0 +1,6 @@
+[console_scripts]
+run_all_taternator = tater.tasks.run_all_taternator:main
+run_taternator_cleanup = tater.tasks.run_taternator_cleanup:main
+run_taternator_loc_agg = tater.tasks.run_taternator_loc_agg:main
+run_taternator_most_detailed = tater.tasks.run_taternator_most_detailed:main
+tater = tater.cli:main

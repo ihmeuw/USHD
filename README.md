@@ -1,20 +1,20 @@
-# US Health Disparities
+# BMI - Race Ethnicity - 2026
 
-This repository contains cleaned code that the US Health Disparities team used to generate results for their publications.
+This repo contains cleaned code used to generate estimates in 'Cause-specific years of life lost attributable to non-optimal body mass index by county, sex, race, and ethnicity in the USA, 2000–2019: a systematic analysis of health disparities' published in BMC Medicine on March 18, 2026. 
 
-## Navigating this repository
+This repo contains eight directories:
 
-You can view the code for a particular publication by selecting the relevant branch from the dropdown menu, or by selecting a link below.
+1) covariates: Used to derive estimates of sociodemographic covariates employed in the SAE models.
+2) non_fatal: Used to fit SAE models of overweight and obesity prevalence.
+3) population: Used to derive population estimates for use in aggregation of model predictions.
+4) post_stratification_frame: Used to produce a post-stratification frame for use in addressing non-response bias and harmonizing survey weights across sources.
+5) risk_factors: Used to model mean BMI.
+6) sae.shared: Contains shared functions used by other repos.
+7) tater/src: Used in calculation of attributable burden.
+8) ushd.paf: Used for PAF calculation.
 
-### Links to resources from IHME and the US Health Disparities Team
+# Other USHD work
 
-* [Life Expectancy - Race Ethnicity - 2022](https://github.com/ihmeuw/USHD/tree/life_expectancy_race_ethnicity_2022)
-* [Cause of Death - Race Ethnicity - 2023](https://github.com/ihmeuw/USHD/tree/cause_of_death_race_ethnicity_2023)
-* [HDI - Race Ethnicity - 2024](https://github.com/ihmeuw/USHD/tree/HDI_race_ethnicity_2024)
-* [Ten Americas - 2024](https://github.com/ihmeuw/USHD/tree/10_americas_2024)
-* [Life Expectancy - Educational Attainment - 2025](https://github.com/ihmeuw/USHD/tree/life_expectancy_educational_attainment_2025)
-* [HALE - Race Ethnicity - 2025](https://github.com/ihmeuw/USHD/tree/HALE_race_ethnicity_2025)
+* To see other published code repositories for the US Health Disparities team, please visit our [code homepage](https://github.com/ihmeuw/USHD/tree/main).
 
-You may find the [main IHME website here](http://www.healthdata.org).
-
-You may find [interactive USHD visualizations here](https://vizhub.healthdata.org/subnational/usa).
+* You may find [interactive US Health Disparities visualizations here](https://vizhub.healthdata.org/subnational/usa).

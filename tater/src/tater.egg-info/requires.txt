@@ -1,0 +1,15 @@
+dalynator
+ushd-db-load
+db_queries
+db_tools
+gbd
+hierarchies
+pandas
+pyreadr
+build
+twine
+
+[dev]
+flake8
+pytest
+pytest-watch
