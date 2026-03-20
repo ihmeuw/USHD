@@ -14,6 +14,7 @@ You can view the code for a particular publication by selecting the relevant bra
 * [Ten Americas - 2024](https://github.com/ihmeuw/USHD/tree/10_americas_2024)
 * [Life Expectancy - Educational Attainment - 2025](https://github.com/ihmeuw/USHD/tree/life_expectancy_educational_attainment_2025)
 * [HALE - Race Ethnicity - 2025](https://github.com/ihmeuw/USHD/tree/HALE_race_ethnicity_2025)
+* [BMI - Race Ethnicity - 2026](https://github.com/ihmeuw/USHD/tree/BMI_race_ethnicity_2026)
 
 You may find the [main IHME website here](http://www.healthdata.org).
 
